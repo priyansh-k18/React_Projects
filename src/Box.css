@@ -1,0 +1,7 @@
+.Box{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    display: inline-block;
+    margin: 5px;
+}
