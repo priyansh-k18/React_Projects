@@ -1,19 +1,22 @@
-import React, {useContext} from "react";
-import  Transaction  from "./Transaction";
+import React, { useContext, useEffect } from "react";
+import Transaction from "./Transaction";
 import { GlobalContext } from "../context/GlobalState";
 
+export default function TransactionList() {
+  const { transactions, getTransaction } = useContext(GlobalContext);
 
-export default function TransactionList(){
+  useEffect(() => {
+    getTransaction(); // Match the correct function name
+  }, []);
 
-  const {transactions} = useContext(GlobalContext);
-
- return (
-        <>
-        <h3>History</h3>
+  return (
+    <>
+      <h3>History</h3>
       <ul className="list">
-        {transactions.map(transaction =>
-           (<Transaction key={transaction.id} transaction={transaction}/>))}
+        {transactions.map((transaction) => (
+          <Transaction key={transaction._id} transaction={transaction} />
+        ))}
       </ul>
-        </>
-    )
+    </>
+  );
 }
